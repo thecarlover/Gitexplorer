@@ -11,6 +11,7 @@ export class ContentComponent {
   user: any = null;
   repos: any[] = [];
   error: string | null = null;
+  loading: boolean = false; // Added loading state
 
   constructor(private apiService: ApiService) {}
 
@@ -20,6 +21,8 @@ export class ContentComponent {
       return;
     }
 
+    this.loading = true; // Set loading to true when fetching data
+
     this.apiService.getUser(this.githubUsername).subscribe({
       next: (userData) => {
         this.user = userData;
@@ -27,10 +30,12 @@ export class ContentComponent {
         this.apiService.getRepos(this.githubUsername).subscribe({
           next: (repoData) => {
             this.repos = repoData;
+            this.loading = false; // Set loading to false after data is fetched
           },
           error: () => {
             this.error = 'Repositories not found or an error occurred';
             this.repos = [];
+            this.loading = false; // Set loading to false if there's an error
           }
         });
       },
@@ -38,6 +43,7 @@ export class ContentComponent {
         this.error = 'User not found or an error occurred';
         this.user = null;
         this.repos = [];
+        this.loading = false; // Set loading to false if there's an error
       }
     });
   }
