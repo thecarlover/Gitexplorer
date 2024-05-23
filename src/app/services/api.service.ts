@@ -1,14 +1,15 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, forkJoin } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
+import { environment } from '../../environments/environment.secret'
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  private accessToken = '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'; 
+  private accessToken = environment.githubAccessToken;
 
   constructor(private httpClient: HttpClient) {}
 
