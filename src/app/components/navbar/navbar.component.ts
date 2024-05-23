@@ -7,24 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
+  title: string = '';
+  currentIndex: number = 0;
+  words: string[] = ['G', 'Gi', 'Git', 'GitE', 'GitEx', 'GitExp', 'GitExpl', 'GitExplo', 'GitExplor', 'GitExplore', 'GitExplorer'];
+
   constructor() { }
 
   ngOnInit(): void {
-    this.setupMenuToggle();
+    this.typeTitle();
   }
 
-  setupMenuToggle(): void {
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    if (menuBtn && mobileMenu) {
-      menuBtn.addEventListener('click', () => {
-        menuBtn.classList.toggle('active');
-        if (menuBtn.classList.contains('active')) {
-          mobileMenu.style.display = 'block';
-        } else {
-          mobileMenu.style.display = 'none';
-        }
-      });
-    }
+  typeTitle(): void {
+    setInterval(() => {
+      this.title = this.words[this.currentIndex];
+      this.currentIndex = (this.currentIndex + 1) % this.words.length;
+    }, 200);
   }
+
 }

@@ -11,31 +11,36 @@ export class ContentComponent {
   user: any = null;
   repos: any[] = [];
   error: string | null = null;
-  loading: boolean = false; // Added loading state
+  loading: boolean = false;
+  currentPage: number = 1;
+  totalPages: number = 0;
+  perPage: number = 10;
 
   constructor(private apiService: ApiService) {}
 
-  searchRepos() {
+  searchRepos(page: number = 1) {
     if (!this.githubUsername.trim()) {
       this.error = 'Please enter a GitHub username';
       return;
     }
 
-    this.loading = true; // Set loading to true when fetching data
+    this.loading = true;
+    this.currentPage = page;
 
     this.apiService.getUser(this.githubUsername).subscribe({
       next: (userData) => {
         this.user = userData;
         this.error = null;
-        this.apiService.getRepos(this.githubUsername).subscribe({
+        this.apiService.getRepos(this.githubUsername, this.currentPage, this.perPage).subscribe({
           next: (repoData) => {
             this.repos = repoData;
-            this.loading = false; // Set loading to false after data is fetched
+            this.totalPages = Math.ceil(userData.public_repos / this.perPage);
+            this.loading = false;
           },
           error: () => {
             this.error = 'Repositories not found or an error occurred';
             this.repos = [];
-            this.loading = false; // Set loading to false if there's an error
+            this.loading = false;
           }
         });
       },
@@ -43,9 +48,16 @@ export class ContentComponent {
         this.error = 'User not found or an error occurred';
         this.user = null;
         this.repos = [];
-        this.loading = false; // Set loading to false if there's an error
+        this.loading = false;
       }
     });
+  }
+
+  changePage(page: number) {
+    if (page < 1 || page > this.totalPages) {
+      return;
+    }
+    this.searchRepos(page);
   }
 
   getLanguagesString(languages: any): string[] {

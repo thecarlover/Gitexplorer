@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, forkJoin } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
-import { environment } from '../../environments/environment.secret'
+import { environment } from '../../environments/environment.secret';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +19,8 @@ export class ApiService {
     return this.httpClient.get(url, { headers });
   }
 
-  getRepos(githubUsername: string): Observable<any[]> {
-    const url = `https://api.github.com/users/${githubUsername}/repos`;
+  getRepos(githubUsername: string, page: number = 1, perPage: number = 10): Observable<any[]> {
+    const url = `https://api.github.com/users/${githubUsername}/repos?page=${page}&per_page=${perPage}`;
     const headers = new HttpHeaders().set('Authorization', 'token ' + this.accessToken);
     return this.httpClient.get<any[]>(url, { headers }).pipe(
       switchMap(repos => {
