@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ReadmeDialogComponent } from '../readme-dialog/readme-dialog.component';
 
 @Component({
   selector: 'app-navbar',
@@ -11,10 +13,10 @@ export class NavbarComponent implements OnInit {
   currentIndex: number = 0;
   words: string[] = ['G', 'Gi', 'Git', 'GitE', 'GitEx', 'GitExp', 'GitExpl', 'GitExplo', 'GitExplor', 'GitExplore', 'GitExplorer'];
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.typeTitle();
+    this.typeTitle(); // Call the method to start typing animation
   }
 
   typeTitle(): void {
@@ -24,4 +26,13 @@ export class NavbarComponent implements OnInit {
     }, 200);
   }
 
+  openReadmeDialog(): void {
+    const dialogRef = this.dialog.open(ReadmeDialogComponent, {
+      width: '600px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
 }

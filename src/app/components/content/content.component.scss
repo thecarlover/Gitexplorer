@@ -1,0 +1,9 @@
+/* src/app/content/content.component.scss */
+.zoom-on-hover {
+    transition: transform 0.3s ease-in-out; /* Smooth transition */
+  }
+  
+  .zoom-on-hover:hover {
+    transform: scale(4); /* Zoom effect on hover */
+  }
+  
