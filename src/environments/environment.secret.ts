@@ -2,6 +2,6 @@
 
 export const environment = {
     production: false,
-    githubAccessToken:'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'
+    githubAccessToken: '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'
   };
   
