@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, forkJoin } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
-import { environment } from '../../environments/environment';
+import { environment } from 'src/environments/environment.development';
+
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +35,7 @@ export class ApiService {
     );
   }
 
-  // Method to get repositories with specified page size
+
   getReposWithPageSize(githubUsername: string, page: number = 1, perPage: number = 10): Observable<any[]> {
     const url = `https://api.github.com/users/${githubUsername}/repos?page=${page}&per_page=${perPage}`;
     const headers = new HttpHeaders().set('Authorization', 'token ' + this.accessToken);
