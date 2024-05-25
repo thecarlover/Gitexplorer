@@ -1,32 +1,25 @@
-// src/app/services/api.service.ts
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable, forkJoin } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
-import { environment } from 'src/environments/environment.development';
-
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  private accessToken = environment.githubAccessToken;
-
   constructor(private httpClient: HttpClient) {}
 
   getUser(githubUsername: string): Observable<any> {
     const url = `https://api.github.com/users/${githubUsername}`;
-    const headers = new HttpHeaders().set('Authorization', 'token ' + this.accessToken);
-    return this.httpClient.get(url, { headers });
+    return this.httpClient.get(url);
   }
 
   getRepos(githubUsername: string, page: number = 1, perPage: number = 10): Observable<any[]> {
     const url = `https://api.github.com/users/${githubUsername}/repos?page=${page}&per_page=${perPage}`;
-    const headers = new HttpHeaders().set('Authorization', 'token ' + this.accessToken);
-    return this.httpClient.get<any[]>(url, { headers }).pipe(
+    return this.httpClient.get<any[]>(url).pipe(
       switchMap(repos => {
         const repoRequests = repos.map(repo =>
-          this.httpClient.get(`https://api.github.com/repos/${githubUsername}/${repo.name}/languages`, { headers }).pipe(
+          this.httpClient.get(`https://api.github.com/repos/${githubUsername}/${repo.name}/languages`).pipe(
             map(languages => ({ ...repo, languages }))
           )
         );
@@ -35,14 +28,12 @@ export class ApiService {
     );
   }
 
-
   getReposWithPageSize(githubUsername: string, page: number = 1, perPage: number = 10): Observable<any[]> {
     const url = `https://api.github.com/users/${githubUsername}/repos?page=${page}&per_page=${perPage}`;
-    const headers = new HttpHeaders().set('Authorization', 'token ' + this.accessToken);
-    return this.httpClient.get<any[]>(url, { headers }).pipe(
+    return this.httpClient.get<any[]>(url).pipe(
       switchMap(repos => {
         const repoRequests = repos.map(repo =>
-          this.httpClient.get(`https://api.github.com/repos/${githubUsername}/${repo.name}/languages`, { headers }).pipe(
+          this.httpClient.get(`https://api.github.com/repos/${githubUsername}/${repo.name}/languages`).pipe(
             map(languages => ({ ...repo, languages }))
           )
         );
