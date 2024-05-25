@@ -1,43 +1,82 @@
-# Fyle Frontend Challenge
 
-## Who is this for?
 
-This challenge is meant for candidates who wish to intern at Fyle and work with our engineering team. The candidate should be able to commit to at least 6 months of dedicated time for internship.
+---
 
-## Why work at Fyle?
+# GitExplorer
 
-Fyle is a fast-growing Expense Management SaaS product. We are ~40 strong engineering team at the moment. 
+Welcome to GitExplorer, a powerful web application built with Angular and Material UI that allows you to delve into GitHub users' profiles and explore their repositories effortlessly.
 
-We are an extremely transparent organization. Check out our [careers page](https://careers.fylehq.com) that will give you a glimpse of what it is like to work at Fyle. Also, check out our Glassdoor reviews [here](https://www.glassdoor.co.in/Reviews/Fyle-Reviews-E1723235.htm). You can read stories from our teammates [here](https://stories.fylehq.com).
+## 🚀 Features
 
-## Challenge outline
+### Search and Explore
+- **Search Bar**: Quickly find GitHub users by typing their usernames in the search bar.
+- **User Profile**: View detailed user information including name, avatar, bio, location, and Twitter handle.
+- **Repository List**: Browse through the user's repositories with ease, including repository name, description, and programming languages used.
 
-This challenge involves implementing application using github api. 
+### User Interaction
+- **Pagination Controls**: Easily navigate through multiple pages of repositories using intuitive pagination controls.
+- **Responsive Design**: Enjoy seamless user experience across devices with responsive design optimized for various screen sizes.
 
-The services that you need to use are already implemented - check out ApiService.
+### Feedback and Error Handling
+- **Skeleton Loader**: Experience smooth loading transitions with a skeleton loader while fetching data.
+- **Error Messages**: Receive clear error messages if the user or repositories are not found or if an error occurs during the search.
 
-You can see details of this challenge [here](https://fyleuniverse.notion.site/fyleuniverse/Fyle-Frontend-development-challenge-cb5085e5e0864e769e7b98c694400aaa)
+## 🛠️ Technologies Used
 
-__Note__ - This challenge is in angular. We work on angular frameworks & after you join we expect the same from you. Hence it is required to complete this assignement in angular itself.
+- **Angular**: Frontend framework for building single-page applications with TypeScript.
+- **Material UI**: Angular Material component library for beautiful, responsive UI design.
+- **RxJS**: Reactive programming library for handling asynchronous data streams with ease.
+- **HttpClientModule**: Angular module for making HTTP requests to the GitHub API.
+- **Vercel**: Hosted on Vercel platform for seamless deployment and hosting.
 
-## What happens next?
+## 🎨 Screenshots and Videos
 
-You will hear back within 48 hours from us via email.
+### Home Page
+<img width="1000" alt="Screenshot 2024-05-25 at 7 02 12 PM" src="https://github.com/thecarlover/Gitexplorer/assets/79406282/fda0cba5-7353-49c9-ad7b-489efa4789ec">
 
-## Installation
+### User Profile
+<img width="1000" alt="Screenshot 2024-05-25 at 7 02 40 PM" src="https://github.com/thecarlover/Gitexplorer/assets/79406282/4f257406-8581-4535-b1e8-a724a71600fd">
 
-1. Fork this repository to your github account.
-2. Clone the forked repository and proceed with steps mentioned below.
+### User profile on Hover
 
-### Install requirements
-* Install angular cli [Ref](https://angular.io/cli)
-* `npm install` in this repository 
+<img width="1680" alt="Screenshot 2024-05-25 at 7 03 15 PM" src="https://github.com/thecarlover/Gitexplorer/assets/79406282/939307f4-ea9b-436d-9896-2e52cdc72093">
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
 
-## Further help
+### Repository List
+<img width="1613" alt="Screenshot 2024-05-25 at 7 04 08 PM" src="https://github.com/thecarlover/Gitexplorer/assets/79406282/5ce88437-5fea-4c49-ab04-269861c4c0fa">
 
-Visit the [Angular Documentation](https://angular.io/guide/styleguide) to learn more.
-Styling is to be strictly done with [Tailwind](https://tailwindcss.com/docs/installation).
+
+
+## 📦 Getting Started
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/thecarlover/Gitexplorer.git
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   cd Gitexplorer
+   npm install
+   ```
+
+3. **Start the development server:**
+   ```bash
+   npm start
+   ```
+
+4. **Open your web browser and navigate to [http://localhost:4200/](http://localhost:4200/) to access the application.**
+
+Alternatively, you can visit the hosted version of the application at [https://fyle-internship-challenge-23-omega-one.vercel.app](https://fyle-internship-challenge-23-omega-one.vercel.app).
+
+## 🤝 Contributing
+
+Contributions are welcome! Follow the [contribution guidelines](CONTRIBUTING.md) to get started.
+
+## 📄 License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+---
+
